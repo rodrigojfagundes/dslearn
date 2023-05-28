@@ -19,10 +19,10 @@ public class JwtTokenEnhancer implements TokenEnhancer {
 	
 	@Autowired
 	private UserRepository userRepository;
-
+	
 	@Override
 	public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
-
+		
 		User user = userRepository.findByEmail(authentication.getName());
 		
 		Map<String, Object> map = new HashMap<>();

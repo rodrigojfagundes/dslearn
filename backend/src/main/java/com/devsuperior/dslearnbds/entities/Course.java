@@ -12,11 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
  
 @Entity
-
 @Table(name = "tb_course")
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -26,7 +25,7 @@ public class Course implements Serializable {
 
 	@OneToMany(mappedBy = "course")
 	private List<Offer> offers = new ArrayList<>();
-	
+
 	public Course() {
 	}
 
@@ -38,7 +37,6 @@ public class Course implements Serializable {
 		this.imgGrayUri = imgGrayUri;
 	}
 	
-	//declarando os GET e SET
 	public Long getId() {
 		return id;
 	}

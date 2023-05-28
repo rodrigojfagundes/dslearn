@@ -10,17 +10,14 @@ import com.devsuperior.dslearnbds.repositories.UserRepository;
 import com.devsuperior.dslearnbds.services.exceptions.ForbiddenException;
 import com.devsuperior.dslearnbds.services.exceptions.UnauthorizedException;
 
-
 @Service
 public class AuthService {
-	
 
 	@Autowired
 	private UserRepository userRepository;
 	
 	
 	@Transactional(readOnly = true)
-	//metodo para pegar o user q ta logado no sistema
 	public User authenticated() {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		try {
@@ -32,8 +29,8 @@ public class AuthService {
 	}
 	
 	public void validateSelfOrAdmin(Long userId) {
-		User user = authenticated();
 
+		User user = authenticated();
 		if (!user.getId().equals(userId) && !user.hasHole("ROLE_ADMIN")) {
 
 			throw new ForbiddenException("Access Denied");

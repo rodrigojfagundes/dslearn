@@ -14,12 +14,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+ 
 @Entity
 @Table(name = "tb_offer")
 public class Offer implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -37,15 +37,13 @@ public class Offer implements Serializable {
 	
 	@OneToMany(mappedBy = "offer")
 	private List<Resource> resources = new ArrayList<>();
-
+	
 	@OneToMany(mappedBy = "offer")
 	private List<Topic> topics = new ArrayList<>();	
 	
-	//declarando o construtor vazio
 	public Offer() {
 	}
 	
-	//declarando o construtor com argumentos
 	public Offer(Long id, String edition, Instant startMoment, Instant endMoment, Course course) {
 		super();
 		this.id = id;

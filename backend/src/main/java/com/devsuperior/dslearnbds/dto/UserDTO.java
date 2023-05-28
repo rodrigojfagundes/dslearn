@@ -14,25 +14,22 @@ public class UserDTO implements Serializable {
 	public UserDTO() {
 	}
 
-	
-	//construtor com argumentos
+
 	public UserDTO(Long id, String name, String email) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 	}
-
+	
 	public UserDTO(User entity) {
-
 		super();
 		id = entity.getId();
 		name = entity.getName();
 		email = entity.getEmail();
 	}
 	
-	
-	//get e set
+
 	public Long getId() {
 		return id;
 	}

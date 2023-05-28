@@ -5,13 +5,13 @@ import java.time.Instant;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
  
 @Entity
 @Table(name = "tb_task")
 public class Task extends Lesson {
 	private static final long serialVersionUID = 1L;
-
+	
+	//declarando os atributos
 	private String description;
 	private Integer questionCount;
 	private Integer approvalCount;
@@ -23,10 +23,7 @@ public class Task extends Lesson {
 	//construtor sem argumentos
 	public Task() {
 	}
-	
-	//construtor com argumentos
-	//e recebe tbm os ATRIBUTOS da CLASSE MAE/PAI/(super classe)
-	//a LESSON... No caso recebemos o ID, TITLE, POSITION, SECTIONS
+
 	public Task(Long id, String title, Integer position, Section section, String description, Integer questionCount,
 			Integer approvalCount, Double weight, Instant dueDate) {
 		super(id, title, position, section);

@@ -20,9 +20,8 @@ import com.devsuperior.dslearnbds.entities.enums.ResourceType;
 //RESOURCE/recurso é quando VC entra em uma OFERTA/offer de um
 //CURSO/curse, e tem (botoes) com OPCOES tipo (SUPORTE a DUVIDA)
 //(Lives Tenicas) (Carreira) (Comunidade Exclusiva) cada (BOTAO) desse
-//é um RESOURCE/recurso... 
+//é um RESOURCE/recurso...
 @Entity
-
 @Table(name = "tb_resource")
 public class Resource implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -35,17 +34,17 @@ public class Resource implements Serializable {
 	private Integer position;
 	private String imgUri;
 	private ResourceType type;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
 
 	@OneToMany(mappedBy = "resource")
 	private List<Section> sections = new ArrayList<>();
-	
+
 	public Resource() {
 	}
-	
+
 	public Resource(Long id, String title, String description, Integer position, String imgUri, ResourceType type,
 			Offer offer) {
 		super();

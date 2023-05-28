@@ -26,10 +26,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 //
 //criando a CLASSE do tipo USER para os USUARIOS da plataforma
 //
+//
+//colocando um ANNOTATION @ENTITY para MAPEAR a classe USER
+//com as ANNOTATION do JPA... 
 @Entity
 @Table(name = "tb_user")
 public class User implements UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -52,6 +56,7 @@ public class User implements UserDetails, Serializable {
 
 	@OneToMany(mappedBy = "user")
 	private List<Notification> notifications = new ArrayList<>();
+
 
 	public User() {
 	}
@@ -131,9 +136,12 @@ public class User implements UserDetails, Serializable {
 	}
 
 	@Override
+
 	public Collection<? extends GrantedAuthority> getAuthorities() {
+
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toList());
 	}
+
 
 	@Override
 	public String getUsername() {
@@ -170,6 +178,7 @@ public class User implements UserDetails, Serializable {
 				return true;
 			}
 		}
+
 		return false;
 	}
 

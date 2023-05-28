@@ -18,7 +18,7 @@ import com.devsuperior.dslearnbds.entities.pk.EnrollmentPK;
 @Entity
 @Table(name = "tb_enrollment")
 public class Enrollment {
-
+	
 	@EmbeddedId
 	private EnrollmentPK id = new EnrollmentPK();
 	
@@ -51,20 +51,18 @@ public class Enrollment {
 	}
 	
 	public User getStudent() {
-
 		return id.getUser();
 	}
-	
+
 	public void setStudent(User user) {
 		id.setUser(user);
 	}
-
+	
 	public Offer getOffer() {
 		return id.getOffer();
 	}
 
 	public void setOffer(Offer offer) {
-
 		id.setOffer(offer);
 	}
 	
@@ -104,7 +102,6 @@ public class Enrollment {
 		return deliveries;
 	}
 
-	//HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

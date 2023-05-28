@@ -14,8 +14,7 @@ import javax.persistence.Table;
 
 //criando a CLASSE/ENTIDADE NOTIFICATIONS, e essa classe/entidade tera
 //as NOTIFICACOES PERSONALIZADAS de cada USUARIO/aluno do sistema
-//cada ALUNO com uma notificacao diferente
-// 
+//cada ALUNO com uma notificacao diferente 
 @Entity
 @Table(name = "tb_notification")
 public class Notification implements Serializable {
@@ -31,16 +30,13 @@ public class Notification implements Serializable {
 	private boolean read;
 	private String route;
 	
-
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	//criando o construtor vazio
+
 	public Notification() {
 	}
-	
-	//criando o construtor com argumentos
+
 	public Notification(Long id, String text, Instant moment, boolean read, String route, User user) {
 		super();
 		this.id = id;
