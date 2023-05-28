@@ -14,22 +14,25 @@ import javax.persistence.Table;
 @Table(name = "tb_role")
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String authority;
-
+	
+	//criando o construtor vazio
 	public Role() {
 	}
 	
+	//criando o construtor com argumentos
 	public Role(Long id, String authority) {
 		super();
 		this.id = id;
 		this.authority = authority;
 	}
 
-
+	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -47,7 +50,6 @@ public class Role implements Serializable {
 	}
 	
 	
-	//criando o HASHCODE EQUALS para fazer comparaoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

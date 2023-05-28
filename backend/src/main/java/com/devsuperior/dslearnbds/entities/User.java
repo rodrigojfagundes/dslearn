@@ -13,14 +13,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
- 
-@Entity
 
+//
+//criando a CLASSE do tipo USER para os USUARIOS da plataforma
+//
+//
+//colocando um ANNOTATION @ENTITY para MAPEAR a classe USER
+//com as ANNOTATION do JPA... 
+@Entity
 @Table(name = "tb_user")
 
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
-
+	//
+	//declarando os ATRIBUTOS/VARIAVEIS da CLASSE
+	//
+	//
+	//colocando o @ID para dizer qual vai ser o ID da TABELA
+	//USER(tb_user) no BANCO
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -29,18 +39,27 @@ public class User implements Serializable{
 	private String password;
 	
 	
+	
+	//para o USER estar associado com VARIAS ROLES
+	//vamos ter q declarar uma COLECAO de ROLES com
+	//o SET/CONJUNTO, pois o SET NAO aceita REPETICOES 
+	//(ao contrario da lista)
+	//todo USER tem q ter uma ROLE/PERFIL... EX: Todo usuario tem q ser
+	//admin ou cliente, ou aluno, etc...
+	//
+	//usando a ANNOTATION @MANYTOMANY para fazer uma ASSOCIACAO
+	//no BANCO de MUITOS para MUITOS... 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
 		joinColumns = @JoinColumn(name = "user_id"),
 		inverseJoinColumns = @JoinColumn(name = "role_id"))	
-	
 	private Set<Role> roles = new HashSet<>();
 	
-
+	
 	public User() {
 	}
 	
-	
+
 	public User(Long id, String name, String email, String password, Set<Role> roles) {
 		super();
 		this.id = id;
@@ -50,8 +69,7 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 	
-	
-	//criando os GET e SET
+
 	public Long getId() {
 		return id;
 	}
@@ -101,8 +119,7 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 	
-	
-	//criando o HASHCODE EQUALS para fazer comparacoes
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

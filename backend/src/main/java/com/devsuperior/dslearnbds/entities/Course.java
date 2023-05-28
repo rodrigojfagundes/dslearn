@@ -1,27 +1,22 @@
 package com.devsuperior.dslearnbds.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//o COURSE é uma ENTIDADE/CLASSE INDEPEDENTE, pois o MINIMO de 
-//associacao entre COURSE e OFFER/oferta e 0, entao pd ter CURSE 
-//SEM OFFERS/oferta
-//
-//
-//colocando um ANNOTATION @ENTITY para MAPEAR a classe COURSE
-//com as ANNOTATION do JPA... 
+
 @Entity
-//usando a ANNOTATION @TABLE para criar uma TABELA e coluna
-//com o NOME da CLASSE e com colunas com nome dos ATRIBUTOS
 @Table(name = "tb_course")
 public class Course implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -29,9 +24,12 @@ public class Course implements Serializable{
 	private String imgUri;
 	private String imgGrayUri;
 
+	@OneToMany(mappedBy = "course")
+	private List<Offer> offers = new ArrayList<>();
+
 	public Course() {
 	}
-	
+
 	public Course(Long id, String name, String imgUri, String imgGrayUri) {
 		super();
 		this.id = id;
@@ -73,9 +71,12 @@ public class Course implements Serializable{
 		this.imgGrayUri = imgGrayUri;
 	}
 
+	public List<Offer> getOffers() {
+		return offers;
+	}
 	
 	//criando o HASHCODE EQUALS para comparacoes
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -100,4 +101,5 @@ public class Course implements Serializable{
 			return false;
 		return true;
 	}	
+	
 }
