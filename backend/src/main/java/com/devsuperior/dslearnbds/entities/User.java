@@ -13,13 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-//
-//criando a CLASSE do tipo USER para os USUARIOS da plataforma
-//
-//
-//colocando um ANNOTATION @ENTITY para MAPEAR a classe USER
-//com as ANNOTATION do JPA... 
+ 
 @Entity
 
 @Table(name = "tb_user")
@@ -39,7 +33,7 @@ public class User implements Serializable{
 	@JoinTable(name = "tb_user_role",
 		joinColumns = @JoinColumn(name = "user_id"),
 		inverseJoinColumns = @JoinColumn(name = "role_id"))	
-
+	
 	private Set<Role> roles = new HashSet<>();
 	
 
@@ -56,7 +50,8 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 	
-
+	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -132,8 +127,5 @@ public class User implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
-
-	
+	}	
 }
