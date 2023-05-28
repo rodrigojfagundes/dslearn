@@ -16,10 +16,7 @@ import javax.persistence.Table;
 
 //
 //criando a CLASSE do tipo USER para os USUARIOS da plataforma
-//
-//
-//colocando um ANNOTATION @ENTITY para MAPEAR a classe USER
-//com as ANNOTATION do JPA... 
+// 
 @Entity
 @Table(name = "tb_user")
 
@@ -51,6 +48,7 @@ public class User implements Serializable{
 
 	public User() {
 	}
+	
 	
 
 	public User(Long id, String name, String email, String password, Set<Role> roles) {

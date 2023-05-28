@@ -15,12 +15,6 @@ import javax.persistence.Table;
 
 import com.devsuperior.dslearnbds.entities.enums.ResourceType;
 
-//
-//implementando a ENTIDADE/classe RESOURCE -> basicamente o 
-//RESOURCE/recurso é quando VC entra em uma OFERTA/offer de um
-//CURSO/curse, e tem (botoes) com OPCOES tipo (SUPORTE a DUVIDA)
-//(Lives Tenicas) (Carreira) (Comunidade Exclusiva) cada (BOTAO) desse
-//é um RESOURCE/recurso...
  
 @Entity
 @Table(name = "tb_resource")
@@ -36,16 +30,11 @@ public class Resource implements Serializable {
 	private String imgUri;
 	private ResourceType type;
 	
-	//fazendo a ASSOCIACAO com o OFFER , pois todo RESOURCE vai ter 
-	// 1 OFFER (todo recurso precisa ser de 1 oferta)
-	//
-	// ANNOTATION @MANYTOONE(Muitos Para Um) -> 1 RECURSO tem 1 OFERTA
-	// e 1 OFERTA pode ter VARIAS RECURSOS :)
-	//
+
 	@ManyToOne
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
-
+	
 	@OneToMany(mappedBy = "resource")
 	private List<Section> sections = new ArrayList<>();
 	
@@ -53,7 +42,6 @@ public class Resource implements Serializable {
 	public Resource() {
 	}
 	
-
 	public Resource(Long id, String title, String description, Integer position, String imgUri, ResourceType type,
 			Offer offer) {
 		super();
@@ -66,7 +54,8 @@ public class Resource implements Serializable {
 		this.offer = offer;
 	}
 	
-
+	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -162,5 +151,5 @@ public class Resource implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
 }

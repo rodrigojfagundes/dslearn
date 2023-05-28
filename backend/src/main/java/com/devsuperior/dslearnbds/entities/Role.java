@@ -28,6 +28,8 @@ public class Role implements Serializable {
 		this.authority = authority;
 	}
 
+	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -44,7 +46,8 @@ public class Role implements Serializable {
 		this.authority = authority;
 	}
 	
-
+	
+	//criando o HASHCODE EQUALS para fazer comparaoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,11 +71,5 @@ public class Role implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
-	
-	
-	
-	
-	
+	}	
 }

@@ -9,12 +9,10 @@ import javax.persistence.ManyToOne;
 import com.devsuperior.dslearnbds.entities.Offer;
 import com.devsuperior.dslearnbds.entities.User;
 
-
 @Embeddable
 public class EnrollmentPK implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;

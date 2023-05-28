@@ -27,6 +27,7 @@ public class Enrollment {
 	public Enrollment() {
 	}
 	
+	
 	public Enrollment(User user, Offer offer, Instant enrollMoment, Instant refundMoment, boolean available,
 			boolean onlyUpdate) {
 		super();
@@ -38,7 +39,7 @@ public class Enrollment {
 		this.onlyUpdate = onlyUpdate;
 	}
 	
-
+	
 	public User getStudent() {
 		return id.getUser();
 	}
@@ -53,8 +54,9 @@ public class Enrollment {
 		return id.getOffer();
 	}
 	
-	
+
 	public void setOffer(Offer offer) {
+
 		id.setOffer(offer);
 	}
 	
