@@ -13,7 +13,7 @@ import com.devsuperior.dslearnbds.repositories.NotificationRepository;
 
 @Service
 public class NotificationService {
-	
+
 	@Autowired
 	private NotificationRepository repository;
 	

@@ -25,7 +25,7 @@ public class Course implements Serializable {
 
 	@OneToMany(mappedBy = "course")
 	private List<Offer> offers = new ArrayList<>();
-
+	
 	public Course() {
 	}
 
@@ -36,7 +36,7 @@ public class Course implements Serializable {
 		this.imgUri = imgUri;
 		this.imgGrayUri = imgGrayUri;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}

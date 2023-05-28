@@ -5,18 +5,12 @@ import java.time.Instant;
 
 import com.devsuperior.dslearnbds.entities.Notification;
 
-//DTO é um OBJ/CLASSE q serve para FILTRAR transferencia de DADOS... 
-//Exemplo temos um OBJ do tipo NOTIFICATION q tem 
-//ID, TEXT, MOMENT, READ, ROUTE, etc...  
-//Mas queremos q seja transferido para o FRONT apenas o TEXT e
-//e o MOMENT... dai usemos o NOTIICATION_DTO...
-//Vantagem é Controlar quais dados q vao ser jogados para o 
-//RESOURCER/controlador, e assim da mais seguranca e economiza 
-//dados na REDE
-//
+
 public class NotificationDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	//
+	//declarando os ATRIBUTOS/VAR
 	private Long id;
 	private String text;
 	private Instant moment;
@@ -41,8 +35,9 @@ public class NotificationDTO implements Serializable{
 		this.userId = userId;
 	}
 	
-	
+
 	public NotificationDTO(Notification entity) {
+
 		id = entity.getId();
 		text = entity.getText();
 		moment = entity.getMoment();
@@ -51,6 +46,9 @@ public class NotificationDTO implements Serializable{
 		userId = entity.getUser().getId();
 	}
 	
+	
+	
+	//get e set
 	
 	public Long getId() {
 		return id;
@@ -121,4 +119,10 @@ public class NotificationDTO implements Serializable{
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+	
+	
+	
+	
+	
+	
 }

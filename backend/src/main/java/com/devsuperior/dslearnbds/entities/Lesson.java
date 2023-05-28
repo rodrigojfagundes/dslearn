@@ -39,7 +39,7 @@ public abstract class Lesson implements Serializable {
 	private Long id;
 	private String title;
 	private Integer position;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "section_id")
 	private Section section;
@@ -59,7 +59,7 @@ public abstract class Lesson implements Serializable {
 	
 	public Lesson() {
 	}
-
+	
 	public Lesson(Long id, String title, Integer position, Section section) {
 		super();
 		this.id = id;
@@ -68,6 +68,7 @@ public abstract class Lesson implements Serializable {
 		this.section = section;
 	}
 	
+
 	public Long getId() {
 		return id;
 	}

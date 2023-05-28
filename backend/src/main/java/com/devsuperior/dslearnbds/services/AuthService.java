@@ -12,25 +12,30 @@ import com.devsuperior.dslearnbds.services.exceptions.UnauthorizedException;
 
 @Service
 public class AuthService {
-
+	
 	@Autowired
 	private UserRepository userRepository;
 	
 	
 	@Transactional(readOnly = true)
 	public User authenticated() {
+
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
 		try {
+
 		return userRepository.findByEmail(username);
 		}
+
 		catch(Exception e) {
+
 			throw new UnauthorizedException("Invalid user");
 		}
 	}
-	
 	public void validateSelfOrAdmin(Long userId) {
 
 		User user = authenticated();
+
 		if (!user.getId().equals(userId) && !user.hasHole("ROLE_ADMIN")) {
 
 			throw new ForbiddenException("Access Denied");

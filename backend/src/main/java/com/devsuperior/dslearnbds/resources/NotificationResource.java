@@ -19,11 +19,10 @@ public class NotificationResource {
 	@Autowired
 	private NotificationService service;
 	
-	
 	@GetMapping
 	public ResponseEntity<Page<NotificationDTO>> notificationsForCurrentUser(Pageable pageable){
 		Page<NotificationDTO> page = service.notificationsForCurrentUser(pageable);
-		
+
 		return ResponseEntity.ok().body(page);
 	}
 	

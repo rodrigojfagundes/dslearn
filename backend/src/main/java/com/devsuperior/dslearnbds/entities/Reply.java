@@ -18,11 +18,14 @@ import javax.persistence.Table;
 
 //criando a CLASSE/ENTIDADE REPLY q é uma RESPOSTA dos TOPICOS
 //
+//
+//colocando um ANNOTATION @ENTITY para MAPEAR a classe REPLY
+//com as ANNOTATION do JPA...
 @Entity
 @Table(name = "tb_reply")
 public class Reply implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

@@ -11,7 +11,6 @@ import javax.persistence.Table;
 public class Task extends Lesson {
 	private static final long serialVersionUID = 1L;
 	
-	//declarando os atributos
 	private String description;
 	private Integer questionCount;
 	private Integer approvalCount;
@@ -20,10 +19,9 @@ public class Task extends Lesson {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")	
 	private Instant dueDate;
 	
-	//construtor sem argumentos
 	public Task() {
 	}
-
+	
 	public Task(Long id, String title, Integer position, Section section, String description, Integer questionCount,
 			Integer approvalCount, Double weight, Instant dueDate) {
 		super(id, title, position, section);

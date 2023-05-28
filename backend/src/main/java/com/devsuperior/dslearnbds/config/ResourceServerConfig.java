@@ -14,14 +14,15 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
-	
+
 	@Autowired
 	private Environment env;
-
+	
 	@Autowired
 	private JwtTokenStore tokenStore;
 
 	private static final String[] PUBLIC = { "/oauth/token", "/h2-console/**" };
+	
 	
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
@@ -33,7 +34,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
 			http.headers().frameOptions().disable();
 		}
-
+		
 		http.authorizeRequests().antMatchers(PUBLIC).permitAll()
 		.anyRequest().authenticated();
 	}

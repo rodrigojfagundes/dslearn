@@ -30,6 +30,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 //colocando um ANNOTATION @ENTITY para MAPEAR a classe USER
 //com as ANNOTATION do JPA... 
 @Entity
+//usando a ANNOTATION @TABLE para criar uma TABELA e coluna
+//com o NOME da CLASSE e com colunas com nome dos ATRIBUTOS
 @Table(name = "tb_user")
 public class User implements UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
@@ -52,11 +54,11 @@ public class User implements UserDetails, Serializable {
 	// no BANCO de MUITOS para MUITOS...
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+
 	private Set<Role> roles = new HashSet<>();
 
 	@OneToMany(mappedBy = "user")
 	private List<Notification> notifications = new ArrayList<>();
-
 
 	public User() {
 	}
@@ -136,12 +138,9 @@ public class User implements UserDetails, Serializable {
 	}
 
 	@Override
-
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-
 		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toList());
 	}
-
 
 	@Override
 	public String getUsername() {
@@ -166,6 +165,7 @@ public class User implements UserDetails, Serializable {
 		return true;
 	}
 
+
 	@Override
 	public boolean isEnabled() {
 // TODO Auto-generated method stub
@@ -178,7 +178,6 @@ public class User implements UserDetails, Serializable {
 				return true;
 			}
 		}
-
 		return false;
 	}
 

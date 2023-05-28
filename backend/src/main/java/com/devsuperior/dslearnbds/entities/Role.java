@@ -12,6 +12,7 @@ import javax.persistence.Table;
 //PERFIL/ROLE/regra de cada usuario... Exemplo
 //Usuario A tem o ROLE/PERFIl de ADMIN
 //Usuario B tem o ROLE/PERFIL de cliente
+//
 @Entity
 @Table(name = "tb_role")
 public class Role implements Serializable {
@@ -24,13 +25,14 @@ public class Role implements Serializable {
 
 	public Role() {
 	}
-	
+
 	public Role(Long id, String authority) {
 		super();
 		this.id = id;
 		this.authority = authority;
 	}
 	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}

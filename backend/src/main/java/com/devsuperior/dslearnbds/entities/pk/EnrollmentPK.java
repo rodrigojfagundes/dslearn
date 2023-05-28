@@ -20,7 +20,7 @@ public class EnrollmentPK implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
-	
+
 	public EnrollmentPK() {
 	}
 
@@ -46,7 +46,7 @@ public class EnrollmentPK implements Serializable {
 		this.offer = offer;
 	}
 
-
+	//declarando os HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

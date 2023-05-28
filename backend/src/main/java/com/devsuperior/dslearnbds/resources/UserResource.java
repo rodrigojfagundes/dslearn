@@ -29,10 +29,9 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 	
+
 	// criando um METODO/ENDPOINT para retornar um USUARIO pelo o ID
 	// do USUARIO
-	//
-	//
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable Long id){
 		UserDTO dto = service.findById(id);

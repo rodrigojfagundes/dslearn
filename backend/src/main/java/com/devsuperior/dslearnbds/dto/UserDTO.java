@@ -4,6 +4,13 @@ import java.io.Serializable;
 
 import com.devsuperior.dslearnbds.entities.User;
 
+//DTO é um OBJ/CLASSE q serve para FILTRAR transferencia de DADOS... 
+//Exemplo temos um OBJ do tipo USER q tem ID, NAME, EMAIL, PASSWORD,
+//etc...  Mas queremos q seja transferido para o FRONT apenas o NOME e
+//EMAIL... dai usemos o USER_DTO... Vantagem é Controlar quais dados q
+//vao ser jogados para o RESOURCER/controlador, e assim da mais 
+//seguranca e economiza dados na REDE
+
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -11,10 +18,11 @@ public class UserDTO implements Serializable {
 	private String name;
 	private String email;
 	
+
 	public UserDTO() {
 	}
 
-
+	
 	public UserDTO(Long id, String name, String email) {
 		super();
 		this.id = id;
@@ -23,13 +31,15 @@ public class UserDTO implements Serializable {
 	}
 	
 	public UserDTO(User entity) {
+
 		super();
 		id = entity.getId();
 		name = entity.getName();
 		email = entity.getEmail();
 	}
 	
-
+	
+	//get e set
 	public Long getId() {
 		return id;
 	}

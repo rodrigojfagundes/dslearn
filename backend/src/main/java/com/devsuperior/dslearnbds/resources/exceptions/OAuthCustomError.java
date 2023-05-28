@@ -12,16 +12,20 @@ public class OAuthCustomError implements Serializable {
 	@JsonProperty("error_description")
 	private String errorDescription;
 	
+	//construtor vazio
 	public OAuthCustomError() {
 	}
 	
+	
+	//construtor com argumentos
 	public OAuthCustomError(String error, String errorDescription) {
 		super();
 		this.error = error;
 		this.errorDescription = errorDescription;
 	}
 	
-
+	
+	//get e set
 	public String getError() {
 		return error;
 	}
@@ -39,5 +43,12 @@ public class OAuthCustomError implements Serializable {
 
 	public void setErrorDescription(String errorDescription) {
 		this.errorDescription = errorDescription;
-	}	
+	}
+	
+	
+	
+	
+	
+	
+	
 }

@@ -19,8 +19,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
- 
 @Entity
+
 @Table(name = "tb_topic")
 public class Topic implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -61,9 +61,10 @@ public class Topic implements Serializable {
 	@OneToMany(mappedBy = "topic")
 	private List<Reply> replies = new ArrayList<>();
 	
+
 	public Topic() {
 	}
-	
+
 	public Topic(Long id, String title, String body, Instant moment, User author, Offer offer, Lesson lesson) {
 		super();
 		this.id = id;
