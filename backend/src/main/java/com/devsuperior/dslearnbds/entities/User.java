@@ -1,7 +1,9 @@
 package com.devsuperior.dslearnbds.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -12,13 +14,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
- 
+//
+//criando a CLASSE do tipo USER para os USUARIOS da plataforma
+//
+//
+//colocando um ANNOTATION @ENTITY para MAPEAR a classe USER
+//com as ANNOTATION do JPA... 
 @Entity
 @Table(name = "tb_user")
-
-public class User implements Serializable{
+public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -28,7 +35,15 @@ public class User implements Serializable{
 	private String email;
 	private String password;
 	
-
+	//para o USER estar associado com VARIAS ROLES
+	//vamos ter q declarar uma COLECAO de ROLES com
+	//o SET/CONJUNTO, pois o SET NAO aceita REPETICOES 
+	//(ao contrario da lista)
+	//todo USER tem q ter uma ROLE/PERFIL... EX: Todo usuario tem q ser
+	//admin ou cliente, ou aluno, etc...
+	//
+	//usando a ANNOTATION @MANYTOMANY para fazer uma ASSOCIACAO
+	//no BANCO de MUITOS para MUITOS... 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
 		joinColumns = @JoinColumn(name = "user_id"),
@@ -36,70 +51,59 @@ public class User implements Serializable{
 
 	private Set<Role> roles = new HashSet<>();
 	
-
+	@OneToMany(mappedBy = "user")
+	private List<Notification> notifications = new ArrayList<>();
+	
 	public User() {
 	}
 	
-
-	public User(Long id, String name, String email, String password, Set<Role> roles) {
+	public User(Long id, String name, String email, String password) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.roles = roles;
 	}
-	
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 
 	public Set<Role> getRoles() {
 		return roles;
 	}
 
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
+	public List<Notification> getNotifications() {
+		return notifications;
 	}
-	
 	
 	//criando o HASHCODE EQUALS para fazer comparacoes
 	@Override
@@ -109,7 +113,6 @@ public class User implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -127,7 +130,4 @@ public class User implements Serializable{
 			return false;
 		return true;
 	}
-	
-
-	
 }

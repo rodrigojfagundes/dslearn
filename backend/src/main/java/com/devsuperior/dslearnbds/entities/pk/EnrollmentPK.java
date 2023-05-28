@@ -9,22 +9,19 @@ import javax.persistence.ManyToOne;
 import com.devsuperior.dslearnbds.entities.Offer;
 import com.devsuperior.dslearnbds.entities.User;
 
-
 @Embeddable
-public class EnrollmentPK implements Serializable{
+public class EnrollmentPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
 	
-
 	public EnrollmentPK() {
-		
 	}
 
 	public EnrollmentPK(User user, Offer offer) {
@@ -32,7 +29,6 @@ public class EnrollmentPK implements Serializable{
 		this.user = user;
 		this.offer = offer;
 	}
-
 
 	public User getUser() {
 		return user;
@@ -49,9 +45,7 @@ public class EnrollmentPK implements Serializable{
 	public void setOffer(Offer offer) {
 		this.offer = offer;
 	}
-	
-	
-	//declarando os HASHCODE EQUALS para fazer comparacoes
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -82,6 +76,4 @@ public class EnrollmentPK implements Serializable{
 			return false;
 		return true;
 	}
-	
-
 }

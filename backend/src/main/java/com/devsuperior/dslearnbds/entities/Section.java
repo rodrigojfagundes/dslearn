@@ -14,8 +14,7 @@ import javax.persistence.Table;
 //ENTIDADE/classe SECTIONS ->  basicamente, quando vc acessa uma
 //OFFER/oferta e dps vc clica no RESOURCE/recurso do CURSO/curse 
 //(TRILHA JAVA REACT) vc vai ir para TELA das SECTIONS/capitulos/MODULOS 
-//do curso... Ou seja as aulas do curso são DIVIDAS em SECTIONS
- 
+//do curso... Ou seja as aulas do curso são DIVIDAS em SECTIONS 
 @Entity
 @Table(name = "tb_section")
 public class Section implements Serializable {
@@ -29,6 +28,15 @@ public class Section implements Serializable {
 	private Integer position;
 	private String imgUri;
 	
+	//
+	//fazendo a ASSOCIACAO/mapeamento com o RESOURCE, pois toda SECTION 
+	//vai ter 1 RESOURCE (vai SER de um RESOURCE)
+	//1 SECTION vai ter UM RESOURCE
+	//1 RESOURCE pode ter VARIAS SECTIONS 
+	//(cada capitulo do curso e um SECTION/capitulo)
+	//
+	// ANNOTATION @MANYTOONE(Muitos Para Um) -> MUITOS SECTIONS para 
+	// 1 RESOURCE
 	@ManyToOne
 	@JoinColumn(name = "resource_id")
 	private Resource resource;
@@ -36,13 +44,10 @@ public class Section implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "prerequisite_id")
 	private Section prerequisite;
-
 	
-	//criando o construtor vazio
 	public Section() {
 	}
-
-
+	
 	public Section(Long id, String title, String description, Integer position, String imgUri, Resource resource,
 			Section prerequisite) {
 		super();
@@ -55,79 +60,61 @@ public class Section implements Serializable {
 		this.prerequisite = prerequisite;
 	}
 	
-	
-	
-	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
 	public String getTitle() {
 		return title;
 	}
-
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-
 	public String getDescription() {
 		return description;
 	}
-
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-
 	public Integer getPosition() {
 		return position;
 	}
-
 
 	public void setPosition(Integer position) {
 		this.position = position;
 	}
 
-
 	public String getImgUri() {
 		return imgUri;
 	}
-
 
 	public void setImgUri(String imgUri) {
 		this.imgUri = imgUri;
 	}
 
-
 	public Resource getResource() {
 		return resource;
 	}
-
 
 	public void setResource(Resource resource) {
 		this.resource = resource;
 	}
 
-
 	public Section getPrerequisite() {
 		return prerequisite;
 	}
 
-
 	public void setPrerequisite(Section prerequisite) {
 		this.prerequisite = prerequisite;
 	}
-	
-	
 	
 	//HASHCODE EQUALS para fazer comparacoes
 	@Override
@@ -137,7 +124,6 @@ public class Section implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -155,6 +141,4 @@ public class Section implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 }
