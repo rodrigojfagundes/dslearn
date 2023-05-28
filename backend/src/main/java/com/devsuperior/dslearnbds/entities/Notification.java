@@ -15,11 +15,8 @@ import javax.persistence.Table;
 //criando a CLASSE/ENTIDADE NOTIFICATIONS, e essa classe/entidade tera
 //as NOTIFICACOES PERSONALIZADAS de cada USUARIO/aluno do sistema
 //cada ALUNO com uma notificacao diferente
-//
-//
-//colocando um ANNOTATION @ENTITY para MAPEAR a classe NOTIFICATIONS
-//com as ANNOTATION do JPA... 
 @Entity
+
 @Table(name = "tb_notification")
 public class Notification implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -34,13 +31,21 @@ public class Notification implements Serializable {
 	private boolean read;
 	private String route;
 	
+
+	//fazendo a ASSOCIACAO com o USER, pois toda NOTIFICATION vai ter 
+	// 1 USER (toda notificacao precisa ser de 1 usuario)
+	//
+	// ANNOTATION @MANYTOONE(Muitos Para Um) -> 1 NOTIFICATION tem 1 USUARIO
+	// e 1 USUARIO pode ter VARIAS NOTIFICACOES :)
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+
 	public Notification() {
 	}
 	
+
 	public Notification(Long id, String text, Instant moment, boolean read, String route, User user) {
 		super();
 		this.id = id;
@@ -51,6 +56,7 @@ public class Notification implements Serializable {
 		this.user = user;
 	}
 
+	//gets e sets
 	public Long getId() {
 		return id;
 	}

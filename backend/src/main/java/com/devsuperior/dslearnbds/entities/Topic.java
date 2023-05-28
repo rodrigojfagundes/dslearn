@@ -19,8 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//criando a CLASSE/ENTIDADE TOPIC... Sera os TOPICOS do FORUM
-//dentro dela tera as perguntas dos usuarios e tals... 
+ 
 @Entity
 @Table(name = "tb_topic")
 public class Topic implements Serializable {
@@ -36,13 +35,11 @@ public class Topic implements Serializable {
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant moment;
-	
 
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private User author;
 	
-
 	@ManyToOne
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
@@ -63,6 +60,7 @@ public class Topic implements Serializable {
 	
 	@OneToMany(mappedBy = "topic")
 	private List<Reply> replies = new ArrayList<>();
+	
 	
 	public Topic() {
 	}

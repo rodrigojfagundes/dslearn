@@ -24,20 +24,23 @@ import javax.persistence.Table;
 //
 //ABSTRACT -> pois a CLASSE LESSON NAO pode ser INSTANCIADA
 //pois toda LESSON vai ser OU um TASK/tarefa ou CONTENT/conteudo
-//o TASK e CONTENT são os 2 TIPOS de SUBCLASSE da LESSON 
+//o TASK e CONTENT são os 2 TIPOS de SUBCLASSE da LESSON
+//
+//colocando um ANNOTATION @ENTITY para MAPEAR a classe LESSON
+//com as ANNOTATION do JPA... 
 @Entity
 @Table(name = "tb_lesson")
+
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Lesson implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private Integer position;
 	
-
 	@ManyToOne
 	@JoinColumn(name = "section_id")
 	private Section section;
@@ -55,8 +58,10 @@ public abstract class Lesson implements Serializable {
 	)
 	private Set<Enrollment> enrollmentsDone = new HashSet<>();
 	
+
 	public Lesson() {
 	}
+	
 	
 	public Lesson(Long id, String title, Integer position, Section section) {
 		super();
@@ -67,6 +72,7 @@ public abstract class Lesson implements Serializable {
 	}
 	
 	
+	//criando os get e set
 	public Long getId() {
 		return id;
 	}
@@ -107,6 +113,7 @@ public abstract class Lesson implements Serializable {
 		return deliveries;
 	}
 
+	//colocando o HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

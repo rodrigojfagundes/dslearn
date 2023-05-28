@@ -14,9 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
  
 @Entity
+
 @Table(name = "tb_offer")
 public class Offer implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -54,6 +54,7 @@ public class Offer implements Serializable {
 		this.course = course;
 	}
 	
+	//declarando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -103,6 +104,7 @@ public class Offer implements Serializable {
 	}
 	
 	
+	//declarando o HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

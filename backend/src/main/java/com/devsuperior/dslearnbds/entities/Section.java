@@ -16,6 +16,7 @@ import javax.persistence.Table;
 //(TRILHA JAVA REACT) vc vai ir para TELA das SECTIONS/capitulos/MODULOS 
 //do curso... Ou seja as aulas do curso são DIVIDAS em SECTIONS 
 @Entity
+
 @Table(name = "tb_section")
 public class Section implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -28,19 +29,10 @@ public class Section implements Serializable {
 	private Integer position;
 	private String imgUri;
 	
-	//
-	//fazendo a ASSOCIACAO/mapeamento com o RESOURCE, pois toda SECTION 
-	//vai ter 1 RESOURCE (vai SER de um RESOURCE)
-	//1 SECTION vai ter UM RESOURCE
-	//1 RESOURCE pode ter VARIAS SECTIONS 
-	//(cada capitulo do curso e um SECTION/capitulo)
-	//
-	// ANNOTATION @MANYTOONE(Muitos Para Um) -> MUITOS SECTIONS para 
-	// 1 RESOURCE
 	@ManyToOne
 	@JoinColumn(name = "resource_id")
 	private Resource resource;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "prerequisite_id")
 	private Section prerequisite;

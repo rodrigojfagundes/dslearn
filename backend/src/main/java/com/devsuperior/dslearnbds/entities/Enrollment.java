@@ -15,13 +15,10 @@ import javax.persistence.Table;
 
 import com.devsuperior.dslearnbds.entities.pk.EnrollmentPK;
 
-
 @Entity
-
 @Table(name = "tb_enrollment")
 public class Enrollment {
 	
-
 	@EmbeddedId
 	private EnrollmentPK id = new EnrollmentPK();
 	
@@ -33,7 +30,6 @@ public class Enrollment {
 	private boolean available;
 	private boolean onlyUpdate;
 	
-
 	@ManyToMany(mappedBy = "enrollmentsDone")
 	private Set<Lesson> lessonsDone = new HashSet<>();	
 
@@ -44,7 +40,6 @@ public class Enrollment {
 	public Enrollment() {
 	}
 	
-
 	public Enrollment(User user, Offer offer, Instant enrollMoment, Instant refundMoment, boolean available,
 			boolean onlyUpdate) {
 		super();
@@ -56,11 +51,10 @@ public class Enrollment {
 		this.onlyUpdate = onlyUpdate;
 	}
 	
-
 	public User getStudent() {
 		return id.getUser();
 	}
-
+	
 	public void setStudent(User user) {
 		id.setUser(user);
 	}
