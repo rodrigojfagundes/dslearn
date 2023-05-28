@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
  
 @Entity
+
 @Table(name = "tb_content")
 public class Content extends Lesson {
 	private static final long serialVersionUID = 1L;
@@ -19,6 +20,7 @@ public class Content extends Lesson {
 		this.textContent = textContent;
 		this.videoUri = videoUri;
 	}
+	
 
 	public String getTextContent() {
 		return textContent;

@@ -22,7 +22,6 @@ import javax.persistence.Table;
 //colocando um ANNOTATION @ENTITY para MAPEAR a classe REPLY
 //com as ANNOTATION do JPA...
 @Entity
-
 @Table(name = "tb_reply")
 public class Reply implements Serializable {
 	private static final long serialVersionUID = 1L;

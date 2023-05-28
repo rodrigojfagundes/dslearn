@@ -18,9 +18,17 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
- 
-@Entity
 
+//
+//criando a CLASSE/ENTIDADE LESSON/aulas do tipo ABSTRACT...
+//
+//ABSTRACT -> pois a CLASSE LESSON NAO pode ser INSTANCIADA
+//pois toda LESSON vai ser OU um TASK/tarefa ou CONTENT/conteudo
+//o TASK e CONTENT são os 2 TIPOS de SUBCLASSE da LESSON
+//
+//colocando um ANNOTATION @ENTITY para MAPEAR a classe LESSON
+//com as ANNOTATION do JPA... 
+@Entity
 @Table(name = "tb_lesson")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Lesson implements Serializable {
@@ -38,7 +46,7 @@ public abstract class Lesson implements Serializable {
 	
 	@OneToMany(mappedBy = "lesson")
 	private List<Deliver> deliveries = new ArrayList<>();
-
+	
 	@ManyToMany
 	@JoinTable(name = "tb_lessons_done",
 		joinColumns = @JoinColumn(name = "lesson_id"),
@@ -48,10 +56,12 @@ public abstract class Lesson implements Serializable {
 		}
 	)
 	private Set<Enrollment> enrollmentsDone = new HashSet<>();
-
+	
+	//criando o construtor sem argumentos
 	public Lesson() {
 	}
 	
+	//construtor com argumentos
 	public Lesson(Long id, String title, Integer position, Section section) {
 		super();
 		this.id = id;
@@ -60,7 +70,8 @@ public abstract class Lesson implements Serializable {
 		this.section = section;
 	}
 	
-
+	
+	//criando os get e set
 	public Long getId() {
 		return id;
 	}

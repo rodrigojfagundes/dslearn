@@ -20,9 +20,13 @@ public class Task extends Lesson {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")	
 	private Instant dueDate;
 	
+	//construtor sem argumentos
 	public Task() {
 	}
 	
+	//construtor com argumentos
+	//e recebe tbm os ATRIBUTOS da CLASSE MAE/PAI/(super classe)
+	//a LESSON... No caso recebemos o ID, TITLE, POSITION, SECTIONS
 	public Task(Long id, String title, Integer position, Section section, String description, Integer questionCount,
 			Integer approvalCount, Double weight, Instant dueDate) {
 		super(id, title, position, section);
@@ -32,7 +36,8 @@ public class Task extends Lesson {
 		this.weight = weight;
 		this.dueDate = dueDate;
 	}
-
+	
+	//criando os get e set
 	public String getDescription() {
 		return description;
 	}

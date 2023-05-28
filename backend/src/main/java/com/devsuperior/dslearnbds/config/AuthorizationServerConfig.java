@@ -22,6 +22,7 @@ import com.devsuperior.dslearnbds.components.JwtTokenEnhancer;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
+
 	@Value("${security.oauth2.client.client-id}")
 	private String clientId;
 	//
@@ -30,6 +31,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	//
 	@Value("${jwt.duration}")
 	private Integer jwtDuration;
+
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -46,13 +48,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
 	private JwtTokenEnhancer tokenEnhancer;
 	
+
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-
 		security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
 	}
 
-	
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
@@ -70,7 +71,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	TokenEnhancerChain chain = new TokenEnhancerChain();
 
 	chain.setTokenEnhancers(Arrays.asList(accessTokenConverter, tokenEnhancer));
-		
+
 		endpoints.authenticationManager(authenticationManager)
 		.tokenStore(tokenStore)
 		.accessTokenConverter(accessTokenConverter)

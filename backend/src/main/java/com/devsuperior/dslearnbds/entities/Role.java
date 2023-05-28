@@ -12,6 +12,9 @@ import javax.persistence.Table;
 //PERFIL/ROLE/regra de cada usuario... Exemplo
 //Usuario A tem o ROLE/PERFIl de ADMIN
 //Usuario B tem o ROLE/PERFIL de cliente
+//
+//colocando um ANNOTATION @ENTITY para MAPEAR a classe ROLE
+//com as ANNOTATION do JPA...
 @Entity
 @Table(name = "tb_role")
 public class Role implements Serializable {
@@ -25,12 +28,14 @@ public class Role implements Serializable {
 	public Role() {
 	}
 	
+	//criando o construtor com argumentos
 	public Role(Long id, String authority) {
 		super();
 		this.id = id;
 		this.authority = authority;
 	}
 	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}

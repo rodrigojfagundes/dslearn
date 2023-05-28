@@ -47,7 +47,7 @@ public class Topic implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "lesson_id")
 	private Lesson lesson;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "reply_id")
 	private Reply answer;
@@ -61,10 +61,10 @@ public class Topic implements Serializable {
 	@OneToMany(mappedBy = "topic")
 	private List<Reply> replies = new ArrayList<>();
 	
+
 	public Topic() {
 	}
 
-	//construtor com argumentos
 	public Topic(Long id, String title, String body, Instant moment, User author, Offer offer, Lesson lesson) {
 		super();
 		this.id = id;

@@ -12,11 +12,9 @@ public class StandardError implements Serializable {
 	private String message;
 	private String path;
 	
-	//declarando construtor
 	public StandardError() {
 	}
 	
-	//criando os GET e SET
 	public Instant getTimestamp() {
 		return timestamp;
 	}
