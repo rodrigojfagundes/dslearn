@@ -8,8 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
+
 @Table(name = "tb_role")
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -28,8 +28,7 @@ public class Role implements Serializable {
 		this.authority = authority;
 	}
 
-	
-	//criando os GET e SET
+
 	public Long getId() {
 		return id;
 	}
@@ -45,9 +44,7 @@ public class Role implements Serializable {
 	public void setAuthority(String authority) {
 		this.authority = authority;
 	}
-	
-	
-	//criando o HASHCODE EQUALS para fazer comparaoes
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -71,5 +68,11 @@ public class Role implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+	
+	
+	
+	
+	
+	
 }

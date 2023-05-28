@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
- 
+//o COURSE é uma ENTIDADE/CLASSE em q
+// 1 - COURSE pode ter 0 ouu VARIAS OFERTAS/OFFER
+// 1 OFFER tem q TER OBRIGATORIAMENTE ((1)) COURSE
 @Entity
 @Table(name = "tb_course")
 public class Course implements Serializable{
@@ -26,10 +28,10 @@ public class Course implements Serializable{
 
 	@OneToMany(mappedBy = "course")
 	private List<Offer> offers = new ArrayList<>();
+	
 
 	public Course() {
 	}
-	
 
 	public Course(Long id, String name, String imgUri, String imgGrayUri) {
 		super();
@@ -76,7 +78,6 @@ public class Course implements Serializable{
 		return offers;
 	}
 	
-	//criando o HASHCODE EQUALS para comparacoes
 
 	@Override
 	public int hashCode() {

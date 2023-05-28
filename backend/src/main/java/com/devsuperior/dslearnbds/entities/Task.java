@@ -6,7 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
- 
+//
+//ENTIDADE/classe TASK/tarefa é uma SUBCLASSE(classe FILHO)
+//da LESSON 
 @Entity
 @Table(name = "tb_task")
 public class Task extends Lesson{
@@ -14,7 +16,7 @@ public class Task extends Lesson{
 	
 	private String description;
 	private Integer questionCount;
-	private Integer approvalCound;
+	private Integer approvalCount;
 	private Double weight;
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant dueDate;
@@ -22,13 +24,12 @@ public class Task extends Lesson{
 	public Task() {
 	}
 	
-
 	public Task(Long id, String title, Integer position, Section section, String description, Integer questionCount,
-			Integer approvalCound, Double weight, Instant dueDate) {
+			Integer approvalCount, Double weight, Instant dueDate) {
 		super(id, title, position, section);
 		this.description = description;
 		this.questionCount = questionCount;
-		this.approvalCound = approvalCound;
+		this.approvalCount = approvalCount;
 		this.weight = weight;
 		this.dueDate = dueDate;
 	}
@@ -53,13 +54,13 @@ public class Task extends Lesson{
 	}
 
 
-	public Integer getApprovalCound() {
-		return approvalCound;
+	public Integer getApprovalCount() {
+		return approvalCount;
 	}
 
 
-	public void setApprovalCound(Integer approvalCound) {
-		this.approvalCound = approvalCound;
+	public void setApprovalCount(Integer approvalCount) {
+		this.approvalCount = approvalCount;
 	}
 
 
@@ -81,9 +82,4 @@ public class Task extends Lesson{
 	public void setDueDate(Instant dueDate) {
 		this.dueDate = dueDate;
 	}
-	
-	
-	
-	
-	
 }

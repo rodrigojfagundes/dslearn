@@ -14,9 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-//
-//criando a CLASSE do tipo USER para os USUARIOS da plataforma
-// 
+ 
 @Entity
 @Table(name = "tb_user")
 
@@ -30,14 +28,7 @@ public class User implements Serializable{
 	private String email;
 	private String password;
 	
-	
-	
-	//para o USER estar associado com VARIAS ROLES
-	//vamos ter q declarar uma COLECAO de ROLES com
-	//o SET/CONJUNTO, pois o SET NAO aceita REPETICOES 
-	//(ao contrario da lista)
-	//todo USER tem q ter uma ROLE/PERFIL... EX: Todo usuario tem q ser
-	//admin ou cliente, ou aluno, etc...
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
 		joinColumns = @JoinColumn(name = "user_id"),
@@ -49,7 +40,6 @@ public class User implements Serializable{
 	public User() {
 	}
 	
-	
 
 	public User(Long id, String name, String email, String password, Set<Role> roles) {
 		super();
@@ -60,8 +50,7 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 	
-	
-	//criando os GET e SET
+
 	public Long getId() {
 		return id;
 	}

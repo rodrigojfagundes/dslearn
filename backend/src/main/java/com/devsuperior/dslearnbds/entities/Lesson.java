@@ -16,16 +16,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-//
-//criando a CLASSE/ENTIDADE LESSON/aulas do tipo ABSTRACT...
-//
-//ABSTRACT -> pois a CLASSE LESSON NAO pode ser INSTANCIADA
-//pois toda LESSON vai ser OU um TASK/tarefa ou CONTENT/conteudo
-//o TASK e CONTENT são os 2 TIPOS de SUBCLASSE da LESSON 
+ 
 @Entity
 
 @Table(name = "tb_lesson")
-
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Lesson implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -41,7 +35,7 @@ public abstract class Lesson implements Serializable {
 	private Section section;
 
 	@ManyToMany
-	@JoinTable(name = "tb_lesson_done",
+	@JoinTable(name = "tb_lessons_done",
 		joinColumns = @JoinColumn(name = "lesson_id"),
 		inverseJoinColumns = {
 				@JoinColumn(name = "user_id"),
@@ -50,7 +44,6 @@ public abstract class Lesson implements Serializable {
 	)
 	private Set<Enrollment> enrollmentsDone = new HashSet<>();
 	
-
 	public Lesson() {
 	}
 	
@@ -63,7 +56,6 @@ public abstract class Lesson implements Serializable {
 		this.section = section;
 	}
 	
-
 	
 	public Long getId() {
 		return id;

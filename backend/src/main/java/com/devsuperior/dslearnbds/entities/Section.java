@@ -9,6 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+//
+//ENTIDADE/classe SECTIONS ->  basicamente, quando vc acessa uma
+//OFFER/oferta e dps vc clica no RESOURCE/recurso do CURSO/curse 
+//(TRILHA JAVA REACT) vc vai ir para TELA das SECTIONS/capitulos/MODULOS 
+//do curso... Ou seja as aulas do curso são DIVIDAS em SECTIONS
  
 @Entity
 @Table(name = "tb_section")
@@ -23,7 +29,6 @@ public class Section implements Serializable {
 	private Integer position;
 	private String imgUri;
 	
-
 	@ManyToOne
 	@JoinColumn(name = "resource_id")
 	private Resource resource;
@@ -33,8 +38,10 @@ public class Section implements Serializable {
 	private Section prerequisite;
 
 	
+	//criando o construtor vazio
 	public Section() {
 	}
+
 
 	public Section(Long id, String title, String description, Integer position, String imgUri, Resource resource,
 			Section prerequisite) {
@@ -50,6 +57,7 @@ public class Section implements Serializable {
 	
 	
 	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -119,7 +127,9 @@ public class Section implements Serializable {
 		this.prerequisite = prerequisite;
 	}
 	
-
+	
+	
+	//HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;
