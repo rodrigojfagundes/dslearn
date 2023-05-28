@@ -21,11 +21,6 @@ import com.devsuperior.dslearnbds.entities.enums.DeliverStatus;
 public class Deliver implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	//declarando as VAR/ATRIBUTOS
-	//
-	//
-	//colocando o @ID para dizer qual vai ser o ID da TABELA
-	//DELIVEr(tb_deliver) no BANCO
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -37,7 +32,6 @@ public class Deliver implements Serializable {
 	private DeliverStatus status;
 	private String feedback;
 	private Integer correctCount;
-	
 
 	@ManyToOne
 	@JoinColumns({  
@@ -46,7 +40,6 @@ public class Deliver implements Serializable {
 	})
 	private Enrollment enrollment;
 	
-
 	@ManyToOne
 	@JoinColumn(name = "lesson_id")
 	private Lesson lesson;

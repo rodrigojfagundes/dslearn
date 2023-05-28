@@ -16,10 +16,8 @@ import javax.persistence.Table;
 import com.devsuperior.dslearnbds.entities.pk.EnrollmentPK;
 
 @Entity
-
 @Table(name = "tb_enrollment")
 public class Enrollment {
-	
 
 	@EmbeddedId
 	private EnrollmentPK id = new EnrollmentPK();
@@ -51,24 +49,20 @@ public class Enrollment {
 		this.available = available;
 		this.onlyUpdate = onlyUpdate;
 	}
-	
+
 	public User getStudent() {
 		return id.getUser();
 	}
 
 	public void setStudent(User user) {
-
 		id.setUser(user);
 	}
 	
-
 	public Offer getOffer() {
-
 		return id.getOffer();
 	}
-
+	
 	public void setOffer(Offer offer) {
-
 		id.setOffer(offer);
 	}
 	

@@ -8,32 +8,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
+//criando a CLASSE/ENTIDADE ROLE ela é meio como se fosse o
+//PERFIL/ROLE/regra de cada usuario... Exemplo
+//Usuario A tem o ROLE/PERFIl de ADMIN
+//Usuario B tem o ROLE/PERFIL de cliente
 @Entity
 @Table(name = "tb_role")
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	//declarando os atributos/variaveis
-	//
-	//colocando o @ID para dizer qual vai ser o ID da TABELA
-	//ROLE(tb_role) no BANCO
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String authority;
 	
-
 	public Role() {
 	}
-
+	
 	public Role(Long id, String authority) {
 		super();
 		this.id = id;
 		this.authority = authority;
 	}
 	
-	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}

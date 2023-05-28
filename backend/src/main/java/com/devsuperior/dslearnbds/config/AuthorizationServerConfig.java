@@ -31,9 +31,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Value("${jwt.duration}")
 	private Integer jwtDuration;
 
-	//injetando os OBJ q vamos precisar
-	//
-	//injetando o BCRYPT
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
@@ -49,7 +46,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
 	private JwtTokenEnhancer tokenEnhancer;
 	
-
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 
@@ -68,13 +64,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		.accessTokenValiditySeconds(jwtDuration);
 	}
 	
-	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 
 	TokenEnhancerChain chain = new TokenEnhancerChain();
 
 	chain.setTokenEnhancers(Arrays.asList(accessTokenConverter, tokenEnhancer));
+		
 		endpoints.authenticationManager(authenticationManager)
 		.tokenStore(tokenStore)
 		.accessTokenConverter(accessTokenConverter)

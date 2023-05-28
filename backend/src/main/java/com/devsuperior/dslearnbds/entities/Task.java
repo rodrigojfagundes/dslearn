@@ -5,6 +5,7 @@ import java.time.Instant;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
  
 @Entity
 @Table(name = "tb_task")
@@ -31,7 +32,7 @@ public class Task extends Lesson {
 		this.weight = weight;
 		this.dueDate = dueDate;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}

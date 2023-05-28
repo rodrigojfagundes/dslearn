@@ -14,11 +14,7 @@ import javax.persistence.Table;
 //ENTIDADE/classe SECTIONS ->  basicamente, quando vc acessa uma
 //OFFER/oferta e dps vc clica no RESOURCE/recurso do CURSO/curse 
 //(TRILHA JAVA REACT) vc vai ir para TELA das SECTIONS/capitulos/MODULOS 
-//do curso... Ou seja as aulas do curso são DIVIDAS em SECTIONS
-//e essa classe serve para isso
-//
-//colocando um ANNOTATION @ENTITY para MAPEAR a classe SECTION
-//com as ANNOTATION do JPA... 
+//do curso... Ou seja as aulas do curso são DIVIDAS em SECTIONS 
 @Entity
 @Table(name = "tb_section")
 public class Section implements Serializable {
@@ -32,6 +28,7 @@ public class Section implements Serializable {
 	private Integer position;
 	private String imgUri;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "resource_id")
 	private Resource resource;

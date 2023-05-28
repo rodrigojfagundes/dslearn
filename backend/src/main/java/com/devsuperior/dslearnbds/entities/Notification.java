@@ -11,10 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
  
 @Entity
-
 @Table(name = "tb_notification")
 public class Notification implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -46,6 +44,7 @@ public class Notification implements Serializable {
 		this.user = user;
 	}
 
+	//gets e sets
 	public Long getId() {
 		return id;
 	}

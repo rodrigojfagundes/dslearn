@@ -24,7 +24,6 @@ import javax.persistence.Table;
 public class Topic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -36,11 +35,11 @@ public class Topic implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant moment;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private User author;
 	
-
 	@ManyToOne
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
@@ -48,7 +47,7 @@ public class Topic implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "lesson_id")
 	private Lesson lesson;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "reply_id")
 	private Reply answer;
@@ -62,10 +61,10 @@ public class Topic implements Serializable {
 	@OneToMany(mappedBy = "topic")
 	private List<Reply> replies = new ArrayList<>();
 	
-	
 	public Topic() {
 	}
 
+	//construtor com argumentos
 	public Topic(Long id, String title, String body, Instant moment, User author, Offer offer, Lesson lesson) {
 		super();
 		this.id = id;
