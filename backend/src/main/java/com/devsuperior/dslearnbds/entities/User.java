@@ -25,12 +25,7 @@ import javax.persistence.Table;
 
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
-	//
-	//declarando os ATRIBUTOS/VARIAVEIS da CLASSE
-	//
-	//
-	//colocando o @ID para dizer qual vai ser o ID da TABELA
-	//USER(tb_user) no BANCO
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -53,9 +48,10 @@ public class User implements Serializable{
 	@JoinTable(name = "tb_user_role",
 		joinColumns = @JoinColumn(name = "user_id"),
 		inverseJoinColumns = @JoinColumn(name = "role_id"))	
+
 	private Set<Role> roles = new HashSet<>();
 	
-	
+
 	public User() {
 	}
 	
@@ -119,7 +115,8 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 	
-
+	
+	//criando o HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -144,5 +141,8 @@ public class User implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+	
+
+	
 }

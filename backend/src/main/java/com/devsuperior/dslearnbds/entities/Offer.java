@@ -2,6 +2,8 @@ package com.devsuperior.dslearnbds.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
  
@@ -23,15 +26,18 @@ public class Offer implements Serializable {
 	private String edition;
 	private Instant startMoment;
 	private Instant endMoment;
+	
 
 	@ManyToOne
 	@JoinColumn(name = "course_id")
 	private Course course;
 
+	@OneToMany(mappedBy = "offer")
+	private List<Resource> resources = new ArrayList<>();
+	
 	public Offer() {
 	}
 	
-
 	public Offer(Long id, String edition, Instant startMoment, Instant endMoment, Course course) {
 		super();
 		this.id = id;
@@ -40,6 +46,7 @@ public class Offer implements Serializable {
 		this.endMoment = endMoment;
 		this.course = course;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -89,8 +96,13 @@ public class Offer implements Serializable {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+	
+	public List<Resource> getResources() {
+		return resources;
+	}
 
 
+	//declarando o HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -115,8 +127,5 @@ public class Offer implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
-
-	
+	}	
 }
