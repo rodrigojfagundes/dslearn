@@ -14,9 +14,13 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
- 
+//
+//criando a CLASSE do tipo USER para os USUARIOS da plataforma
+//
+//
+//colocando um ANNOTATION @ENTITY para MAPEAR a classe USER
+//com as ANNOTATION do JPA... 
 @Entity
-
 @Table(name = "tb_user")
 
 public class User implements Serializable{
@@ -37,9 +41,6 @@ public class User implements Serializable{
 	//(ao contrario da lista)
 	//todo USER tem q ter uma ROLE/PERFIL... EX: Todo usuario tem q ser
 	//admin ou cliente, ou aluno, etc...
-	//
-	//usando a ANNOTATION @MANYTOMANY para fazer uma ASSOCIACAO
-	//no BANCO de MUITOS para MUITOS... 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
 		joinColumns = @JoinColumn(name = "user_id"),
@@ -61,7 +62,8 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 	
-
+	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -137,5 +139,8 @@ public class User implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+	
+
+	
 }

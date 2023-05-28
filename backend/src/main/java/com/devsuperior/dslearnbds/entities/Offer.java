@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
- 
+//
+//o OFFERS/oferta é uma ENTIDADE/CLASSE que DEPENDE OBRIGATORIAMENTE 
+//de um COURSE... ou seja:
+//1 - OFFER tem q TER OBRIGATORIAMENTE ((1)) COURSE
+//1 - COURSE PODE ter VARIAS OFERTAS/OFFER
+// 
 @Entity
 @Table(name = "tb_offer")
 public class Offer implements Serializable {
@@ -24,12 +30,16 @@ public class Offer implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String edition;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant startMoment;
+	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant endMoment;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "course_id")
 	private Course course;
+	
 
 	@OneToMany(mappedBy = "offer")
 	private List<Resource> resources = new ArrayList<>();
@@ -128,8 +138,5 @@ public class Offer implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-	
-
-	
+	}	
 }

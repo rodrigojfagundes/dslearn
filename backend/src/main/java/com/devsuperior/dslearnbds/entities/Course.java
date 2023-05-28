@@ -10,13 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+ 
 @Entity
 
 @Table(name = "tb_course")
 public class Course implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -26,7 +26,6 @@ public class Course implements Serializable{
 
 	@OneToMany(mappedBy = "course")
 	private List<Offer> offers = new ArrayList<>();
-
 
 	public Course() {
 	}
@@ -101,5 +100,8 @@ public class Course implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+
+	
+	
 }

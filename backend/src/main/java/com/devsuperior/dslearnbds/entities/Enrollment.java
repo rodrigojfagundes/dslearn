@@ -11,7 +11,6 @@ import com.devsuperior.dslearnbds.entities.pk.EnrollmentPK;
 
  
 @Entity
-
 @Table(name = "tb_enrollment")
 public class Enrollment {
 	
@@ -24,8 +23,7 @@ public class Enrollment {
 	private boolean available;
 	private boolean onlyUpdate;
 	
-	
-	//criando o construtor vazio
+
 	public Enrollment() {
 	}
 	
@@ -40,17 +38,21 @@ public class Enrollment {
 		this.onlyUpdate = onlyUpdate;
 	}
 	
+
 	public User getStudent() {
 		return id.getUser();
 	}
 	
+
 	public void setStudent(User user) {
 		id.setUser(user);
 	}
+	
 
 	public Offer getOffer() {
 		return id.getOffer();
 	}
+	
 	
 	public void setOffer(Offer offer) {
 		id.setOffer(offer);

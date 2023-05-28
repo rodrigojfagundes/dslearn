@@ -16,6 +16,7 @@ import javax.persistence.Table;
 //(TRILHA JAVA REACT) vc vai ir para TELA das SECTIONS/capitulos/MODULOS 
 //do curso... Ou seja as aulas do curso são DIVIDAS em SECTIONS 
 @Entity
+
 @Table(name = "tb_section")
 public class Section implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -33,15 +34,18 @@ public class Section implements Serializable {
 	@JoinColumn(name = "resource_id")
 	private Resource resource;
 
+
 	@ManyToOne
 	@JoinColumn(name = "prerequisite_id")
 	private Section prerequisite;
 
-
+	
+	//criando o construtor vazio
 	public Section() {
 	}
 
 
+	//construtor com argumentos
 	public Section(Long id, String title, String description, Integer position, String imgUri, Resource resource,
 			Section prerequisite) {
 		super();
@@ -54,7 +58,9 @@ public class Section implements Serializable {
 		this.prerequisite = prerequisite;
 	}
 	
-
+	
+	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}

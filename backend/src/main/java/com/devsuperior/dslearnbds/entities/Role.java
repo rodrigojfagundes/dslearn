@@ -9,11 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-
-//criando a CLASSE/ENTIDADE ROLE ela é meio como se fosse o
-//PERFIL/ROLE/regra de cada usuario...
 @Entity
-
 @Table(name = "tb_role")
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,13 +21,12 @@ public class Role implements Serializable {
 
 	public Role() {
 	}
-	
+
 	public Role(Long id, String authority) {
 		super();
 		this.id = id;
 		this.authority = authority;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -73,5 +68,11 @@ public class Role implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+	
+	
+	
+	
+	
+	
 }
