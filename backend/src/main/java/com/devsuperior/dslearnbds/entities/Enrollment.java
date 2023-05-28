@@ -18,7 +18,7 @@ import com.devsuperior.dslearnbds.entities.pk.EnrollmentPK;
 @Entity
 @Table(name = "tb_enrollment")
 public class Enrollment {
-	
+
 	@EmbeddedId
 	private EnrollmentPK id = new EnrollmentPK();
 	
@@ -32,10 +32,10 @@ public class Enrollment {
 	
 	@ManyToMany(mappedBy = "enrollmentsDone")
 	private Set<Lesson> lessonsDone = new HashSet<>();	
-
+	
 	@OneToMany(mappedBy = "enrollment")
 	private List<Deliver> deliveries = new ArrayList<>();
-	
+
 	public Enrollment() {
 	}
 	
@@ -49,7 +49,7 @@ public class Enrollment {
 		this.available = available;
 		this.onlyUpdate = onlyUpdate;
 	}
-	
+
 	public User getStudent() {
 		return id.getUser();
 	}
@@ -57,11 +57,11 @@ public class Enrollment {
 	public void setStudent(User user) {
 		id.setUser(user);
 	}
-	
+
 	public Offer getOffer() {
 		return id.getOffer();
 	}
-	
+
 	public void setOffer(Offer offer) {
 		id.setOffer(offer);
 	}
@@ -102,6 +102,7 @@ public class Enrollment {
 		return deliveries;
 	}
 
+	//HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

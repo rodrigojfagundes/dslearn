@@ -2,9 +2,11 @@ package com.devsuperior.dslearnbds.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,15 +19,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//
-//criando a CLASSE do tipo USER para os USUARIOS da plataforma
-//
-//
-//colocando um ANNOTATION @ENTITY para MAPEAR a classe USER
-//com as ANNOTATION do JPA... 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+ 
 @Entity
 @Table(name = "tb_user")
-public class User implements Serializable {
+public class User implements UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -34,28 +35,18 @@ public class User implements Serializable {
 	private String name;
 	private String email;
 	private String password;
-	
-	//para o USER estar associado com VARIAS ROLES
-	//vamos ter q declarar uma COLECAO de ROLES com
-	//o SET/CONJUNTO, pois o SET NAO aceita REPETICOES 
-	//(ao contrario da lista)
-	//todo USER tem q ter uma ROLE/PERFIL... EX: Todo usuario tem q ser
-	//admin ou cliente, ou aluno, etc...
-	//
-	//usando a ANNOTATION @MANYTOMANY para fazer uma ASSOCIACAO
-	//no BANCO de MUITOS para MUITOS... 
+
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "tb_user_role",
-		joinColumns = @JoinColumn(name = "user_id"),
-		inverseJoinColumns = @JoinColumn(name = "role_id"))	
+	@JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	// fazendo o mapeamento em q um USER tem varias ROLES
 	private Set<Role> roles = new HashSet<>();
-	
+
 	@OneToMany(mappedBy = "user")
 	private List<Notification> notifications = new ArrayList<>();
 
 	public User() {
 	}
-	
+
 	public User(Long id, String name, String email, String password) {
 		super();
 		this.id = id;
@@ -103,8 +94,8 @@ public class User implements Serializable {
 	public List<Notification> getNotifications() {
 		return notifications;
 	}
-	
-	//criando o HASHCODE EQUALS para fazer comparacoes
+
+	// criando o HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -129,4 +120,41 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toList());
+	}
+
+	@Override
+	public String getUsername() {
+		return email;
+	}
+
+
+	@Override
+	public boolean isAccountNonExpired() {
+// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+// TODO Auto-generated method stub
+		return true;
+	}
+
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+// TODO Auto-generated method stub
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+// TODO Auto-generated method stub
+		return true;
+	}
+
 }

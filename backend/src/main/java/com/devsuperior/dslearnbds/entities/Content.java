@@ -12,7 +12,7 @@ public class Content extends Lesson {
 
 	private String textContent;
 	private String videoUri;
-	
+
 	public Content() {
 	}
 
@@ -21,7 +21,7 @@ public class Content extends Lesson {
 		this.textContent = textContent;
 		this.videoUri = videoUri;
 	}
-	
+
 	public String getTextContent() {
 		return textContent;
 	}

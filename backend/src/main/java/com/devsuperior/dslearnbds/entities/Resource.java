@@ -14,18 +14,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.devsuperior.dslearnbds.entities.enums.ResourceType;
-
-//
-//implementando a ENTIDADE/classe RESOURCE -> basicamente o 
-//RESOURCE/recurso é quando VC entra em uma OFERTA/offer de um
-//CURSO/curse, e tem (botoes) com OPCOES tipo (SUPORTE a DUVIDA)
-//(Lives Tenicas) (Carreira) (Comunidade Exclusiva) cada (BOTAO) desse
-//é um RESOURCE/recurso... 
+ 
 @Entity
 @Table(name = "tb_resource")
 public class Resource implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -57,6 +51,7 @@ public class Resource implements Serializable {
 		this.offer = offer;
 	}
 	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}

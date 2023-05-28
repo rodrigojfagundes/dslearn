@@ -12,7 +12,7 @@ import com.devsuperior.dslearnbds.entities.User;
 @Embeddable
 public class EnrollmentPK implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -46,6 +46,7 @@ public class EnrollmentPK implements Serializable {
 		this.offer = offer;
 	}
 
+	//declarando os HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

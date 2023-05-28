@@ -24,18 +24,17 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Lesson implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private Integer position;
 	
-
 	@ManyToOne
 	@JoinColumn(name = "section_id")
 	private Section section;
-	
+
 	@OneToMany(mappedBy = "lesson")
 	private List<Deliver> deliveries = new ArrayList<>();
 	
@@ -52,6 +51,7 @@ public abstract class Lesson implements Serializable {
 	public Lesson() {
 	}
 	
+	//construtor com argumentos
 	public Lesson(Long id, String title, Integer position, Section section) {
 		super();
 		this.id = id;
@@ -60,6 +60,8 @@ public abstract class Lesson implements Serializable {
 		this.section = section;
 	}
 	
+	
+	//criando os get e set
 	public Long getId() {
 		return id;
 	}

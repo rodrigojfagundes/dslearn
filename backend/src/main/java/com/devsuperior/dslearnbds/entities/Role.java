@@ -8,10 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//criando a CLASSE/ENTIDADE ROLE ela é meio como se fosse o
-//PERFIL/ROLE/regra de cada usuario... Exemplo
-//Usuario A tem o ROLE/PERFIl de ADMIN
-//Usuario B tem o ROLE/PERFIL de cliente
 @Entity
 @Table(name = "tb_role")
 public class Role implements Serializable {
@@ -31,6 +27,7 @@ public class Role implements Serializable {
 		this.authority = authority;
 	}
 	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -47,7 +44,6 @@ public class Role implements Serializable {
 		this.authority = authority;
 	}
 	
-	//criando o HASHCODE EQUALS para fazer comparaoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

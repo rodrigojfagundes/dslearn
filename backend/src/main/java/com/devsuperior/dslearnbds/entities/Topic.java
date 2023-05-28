@@ -33,8 +33,8 @@ public class Topic implements Serializable {
 	private String body;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant moment;
-	
+	private Instant moment;	
+
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private User author;
@@ -61,7 +61,6 @@ public class Topic implements Serializable {
 	private List<Reply> replies = new ArrayList<>();
 	
 	
-
 	public Topic() {
 	}
 

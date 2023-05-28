@@ -11,10 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-//criando a CLASSE/ENTIDADE NOTIFICATIONS, e essa classe/entidade tera
-//as NOTIFICACOES PERSONALIZADAS de cada USUARIO/aluno do sistema
-//cada ALUNO com uma notificacao diferente 
+ 
 @Entity
 @Table(name = "tb_notification")
 public class Notification implements Serializable {
@@ -33,7 +30,7 @@ public class Notification implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	public Notification() {
 	}
 	
@@ -47,6 +44,7 @@ public class Notification implements Serializable {
 		this.user = user;
 	}
 
+	//gets e sets
 	public Long getId() {
 		return id;
 	}
