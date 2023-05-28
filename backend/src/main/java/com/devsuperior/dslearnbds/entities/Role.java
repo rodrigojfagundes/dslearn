@@ -12,7 +12,6 @@ import javax.persistence.Table;
 //PERFIL/ROLE/regra de cada usuario... Exemplo
 //Usuario A tem o ROLE/PERFIl de ADMIN
 //Usuario B tem o ROLE/PERFIL de cliente
-//
 @Entity
 @Table(name = "tb_role")
 public class Role implements Serializable {
@@ -22,7 +21,7 @@ public class Role implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String authority;
-
+	
 	public Role() {
 	}
 
@@ -32,7 +31,6 @@ public class Role implements Serializable {
 		this.authority = authority;
 	}
 	
-	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -49,7 +47,6 @@ public class Role implements Serializable {
 		this.authority = authority;
 	}
 	
-	//criando o HASHCODE EQUALS para fazer comparaoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

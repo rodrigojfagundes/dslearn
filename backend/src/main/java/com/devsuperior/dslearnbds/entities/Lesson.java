@@ -33,13 +33,13 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Lesson implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private Integer position;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "section_id")
 	private Section section;
@@ -56,7 +56,7 @@ public abstract class Lesson implements Serializable {
 		}
 	)
 	private Set<Enrollment> enrollmentsDone = new HashSet<>();
-	
+
 	public Lesson() {
 	}
 	
@@ -68,7 +68,7 @@ public abstract class Lesson implements Serializable {
 		this.section = section;
 	}
 	
-
+	
 	public Long getId() {
 		return id;
 	}

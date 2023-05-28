@@ -31,6 +31,7 @@ public class Offer implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant endMoment;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "course_id")
 	private Course course;
@@ -43,7 +44,7 @@ public class Offer implements Serializable {
 	
 	public Offer() {
 	}
-	
+
 	public Offer(Long id, String edition, Instant startMoment, Instant endMoment, Course course) {
 		super();
 		this.id = id;
@@ -53,7 +54,6 @@ public class Offer implements Serializable {
 		this.course = course;
 	}
 	
-	//declarando os GET e SET
 	public Long getId() {
 		return id;
 	}

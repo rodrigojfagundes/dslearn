@@ -25,10 +25,9 @@ import com.devsuperior.dslearnbds.services.UserService;
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
-	
+
 	@Autowired
 	private UserService service;
-	
 
 	// criando um METODO/ENDPOINT para retornar um USUARIO pelo o ID
 	// do USUARIO

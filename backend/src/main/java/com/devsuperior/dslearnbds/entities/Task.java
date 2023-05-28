@@ -7,10 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
  
 @Entity
+
 @Table(name = "tb_task")
 public class Task extends Lesson {
 	private static final long serialVersionUID = 1L;
-	
+
 	private String description;
 	private Integer questionCount;
 	private Integer approvalCount;
@@ -32,7 +33,6 @@ public class Task extends Lesson {
 		this.dueDate = dueDate;
 	}
 	
-	//criando os get e set
 	public String getDescription() {
 		return description;
 	}

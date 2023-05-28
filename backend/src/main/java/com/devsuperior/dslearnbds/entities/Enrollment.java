@@ -55,7 +55,6 @@ public class Enrollment {
 	}
 	
 	public void setStudent(User user) {
-
 		id.setUser(user);
 	}
 	

@@ -16,18 +16,22 @@ import com.devsuperior.dslearnbds.entities.User;
 import com.devsuperior.dslearnbds.repositories.UserRepository;
 import com.devsuperior.dslearnbds.services.exceptions.ResourceNotFoundException;
 
+
 @Service
 
 public class UserService implements UserDetailsService {
 
 	private static Logger logger = LoggerFactory.getLogger(UserService.class);
+	
 
 	@Autowired
 	private UserRepository repository;
 	
+
 	@Autowired
 	private AuthService authService;
 	
+
 	@Transactional(readOnly = true)
 	public UserDTO findById(Long id) {
 		
@@ -44,16 +48,11 @@ public class UserService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
 		User user = repository.findByEmail(username);
-
 		if(user == null) {
-
 			logger.error("User not found" + username);
-
 			throw new UsernameNotFoundException("Email not found");
 		}
-
 		logger.info("user found" + username);
 		return user;
 	}	

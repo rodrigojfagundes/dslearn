@@ -51,13 +51,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
+	
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+
 		security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
 	}
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+
 		clients.inMemory()
 		.withClient(clientId)
 		.secret(passwordEncoder.encode(clientSecret))
@@ -66,14 +69,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		.accessTokenValiditySeconds(jwtDuration)
 		.refreshTokenValiditySeconds(jwtDuration);
 	}
-
+	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 
 	TokenEnhancerChain chain = new TokenEnhancerChain();
 
 	chain.setTokenEnhancers(Arrays.asList(accessTokenConverter, tokenEnhancer));
-
 		endpoints.authenticationManager(authenticationManager)
 		.tokenStore(tokenStore)
 		.accessTokenConverter(accessTokenConverter)

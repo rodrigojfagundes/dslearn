@@ -27,7 +27,7 @@ public class Section implements Serializable {
 	private String description;
 	private Integer position;
 	private String imgUri;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "resource_id")
 	private Resource resource;
@@ -36,9 +36,11 @@ public class Section implements Serializable {
 	@JoinColumn(name = "prerequisite_id")
 	private Section prerequisite;
 	
+	//criando o construtor vazio
 	public Section() {
 	}
 	
+	//construtor com argumentos
 	public Section(Long id, String title, String description, Integer position, String imgUri, Resource resource,
 			Section prerequisite) {
 		super();
@@ -51,6 +53,7 @@ public class Section implements Serializable {
 		this.prerequisite = prerequisite;
 	}
 	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}

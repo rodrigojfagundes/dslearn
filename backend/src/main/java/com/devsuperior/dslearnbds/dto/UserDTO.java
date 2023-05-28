@@ -10,19 +10,17 @@ import com.devsuperior.dslearnbds.entities.User;
 //EMAIL... dai usemos o USER_DTO... Vantagem é Controlar quais dados q
 //vao ser jogados para o RESOURCER/controlador, e assim da mais 
 //seguranca e economiza dados na REDE
-
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	private String name;
 	private String email;
-	
 
 	public UserDTO() {
 	}
 
-	
+
 	public UserDTO(Long id, String name, String email) {
 		super();
 		this.id = id;
@@ -30,16 +28,15 @@ public class UserDTO implements Serializable {
 		this.email = email;
 	}
 	
-	public UserDTO(User entity) {
 
+	public UserDTO(User entity) {
 		super();
 		id = entity.getId();
 		name = entity.getName();
 		email = entity.getEmail();
 	}
 	
-	
-	//get e set
+
 	public Long getId() {
 		return id;
 	}

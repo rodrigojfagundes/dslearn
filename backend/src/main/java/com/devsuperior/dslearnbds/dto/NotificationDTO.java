@@ -5,12 +5,9 @@ import java.time.Instant;
 
 import com.devsuperior.dslearnbds.entities.Notification;
 
-
 public class NotificationDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	//
-	//declarando os ATRIBUTOS/VAR
 	private Long id;
 	private String text;
 	private Instant moment;
@@ -18,13 +15,9 @@ public class NotificationDTO implements Serializable{
 	private String route;
 	private Long userId;
 	
-	//construtor vazio
 	public NotificationDTO() {
 	}
 	
-	
-	
-	//construtor com argumentos
 	public NotificationDTO(Long id, String text, Instant moment, boolean read, String route, Long userId) {
 		super();
 		this.id = id;
@@ -35,9 +28,7 @@ public class NotificationDTO implements Serializable{
 		this.userId = userId;
 	}
 	
-
 	public NotificationDTO(Notification entity) {
-
 		id = entity.getId();
 		text = entity.getText();
 		moment = entity.getMoment();
@@ -46,10 +37,7 @@ public class NotificationDTO implements Serializable{
 		userId = entity.getUser().getId();
 	}
 	
-	
-	
-	//get e set
-	
+
 	public Long getId() {
 		return id;
 	}
