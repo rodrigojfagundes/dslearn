@@ -13,11 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-//
-//criando a CLASSE do tipo USER para os USUARIOS da plataforma
-// 
+ 
 @Entity
+
 @Table(name = "tb_user")
 
 public class User implements Serializable{
@@ -62,7 +60,8 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 	
-
+	
+	//criando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -112,8 +111,7 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 	
-	
-	//criando o HASHCODE EQUALS para fazer comparacoes
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -138,5 +136,8 @@ public class User implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+	
+
+	
 }

@@ -1,6 +1,5 @@
 package com.devsuperior.dslearnbds.entities.enums;
 
-
 //criando um ENUM de nome RESOURCETYPE
 public enum ResourceType {
 	

@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.devsuperior.dslearnbds.entities.enums.ResourceType;
+
  
 @Entity
 @Table(name = "tb_resource")
@@ -28,15 +29,19 @@ public class Resource implements Serializable {
 	private Integer position;
 	private String imgUri;
 	private ResourceType type;
-
 	
+	//fazendo a ASSOCIACAO com o OFFER , pois todo RESOURCE vai ter 
+	// 1 OFFER (todo recurso precisa ser de 1 oferta)
+	//
+	// ANNOTATION @MANYTOONE(Muitos Para Um) -> 1 RECURSO tem 1 OFERTA
+	// e 1 OFERTA pode ter VARIAS RECURSOS :)
 	@ManyToOne
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
 
 	@OneToMany(mappedBy = "resource")
 	private List<Section> sections = new ArrayList<>();
-
+	
 
 	public Resource() {
 	}
@@ -124,8 +129,7 @@ public class Resource implements Serializable {
 		this.offer = offer;
 	}
 	
-	
-	//HASHCODE EQUALS para fazer comparacoes
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

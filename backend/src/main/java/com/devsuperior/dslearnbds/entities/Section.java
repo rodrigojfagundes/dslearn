@@ -11,13 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 //
-//ENTIDADE/classe de nome SECTIONS q é onde vai ta os 
-//MODULOS/capitulos/sessoes do CURSO... Pois um curso e dividido em modulos 
+//ENTIDADE/classe SECTIONS ->  basicamente, quando vc acessa uma
+//OFFER/oferta e dps vc clica no RESOURCE/recurso do CURSO/curse 
+//(TRILHA JAVA REACT) vc vai ir para TELA das SECTIONS/capitulos/MODULOS 
+//do curso... Ou seja as aulas do curso são DIVIDAS em SECTIONS
+//e essa classe serve para isso 
 @Entity
 
 @Table(name = "tb_section")
 public class Section implements Serializable {
 	private static final long serialVersionUID = 1L;
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +30,11 @@ public class Section implements Serializable {
 	private String description;
 	private Integer position;
 	private String imgUri;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "resource_id")
 	private Resource resource;
- 
+
 
 	@ManyToOne
 	@JoinColumn(name = "prerequisite_id")
@@ -53,7 +57,7 @@ public class Section implements Serializable {
 		this.prerequisite = prerequisite;
 	}
 	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -123,9 +127,7 @@ public class Section implements Serializable {
 		this.prerequisite = prerequisite;
 	}
 	
-	
-	
-	//HASHCODE EQUALS para fazer comparacoes
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
