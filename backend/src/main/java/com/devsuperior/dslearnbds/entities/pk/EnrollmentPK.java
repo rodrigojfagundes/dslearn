@@ -12,6 +12,7 @@ import com.devsuperior.dslearnbds.entities.User;
 @Embeddable
 public class EnrollmentPK implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -21,6 +22,7 @@ public class EnrollmentPK implements Serializable {
 	@JoinColumn(name = "offer_id")
 	private Offer offer;
 	
+
 	public EnrollmentPK() {
 	}
 

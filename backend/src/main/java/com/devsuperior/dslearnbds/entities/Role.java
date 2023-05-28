@@ -8,19 +8,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "tb_role")
 public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//declarando os atributos/variaveis
+	//
+	//colocando o @ID para dizer qual vai ser o ID da TABELA
+	//ROLE(tb_role) no BANCO
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String authority;
 	
+
 	public Role() {
 	}
-	
+
 	public Role(Long id, String authority) {
 		super();
 		this.id = id;
@@ -44,6 +50,7 @@ public class Role implements Serializable {
 		this.authority = authority;
 	}
 	
+	//criando o HASHCODE EQUALS para fazer comparaoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

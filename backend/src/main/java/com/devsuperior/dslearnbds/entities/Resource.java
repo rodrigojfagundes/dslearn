@@ -35,10 +35,10 @@ public class Resource implements Serializable {
 
 	@OneToMany(mappedBy = "resource")
 	private List<Section> sections = new ArrayList<>();
-
+	
 	public Resource() {
 	}
-	
+
 	public Resource(Long id, String title, String description, Integer position, String imgUri, ResourceType type,
 			Offer offer) {
 		super();

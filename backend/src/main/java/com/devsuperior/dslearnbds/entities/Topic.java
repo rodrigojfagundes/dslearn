@@ -24,6 +24,7 @@ import javax.persistence.Table;
 public class Topic implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -33,12 +34,13 @@ public class Topic implements Serializable {
 	private String body;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant moment;	
-
+	private Instant moment;
+	
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private User author;
 	
+
 	@ManyToOne
 	@JoinColumn(name = "offer_id")
 	private Offer offer;

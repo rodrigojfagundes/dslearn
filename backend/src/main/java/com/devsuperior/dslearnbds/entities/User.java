@@ -23,8 +23,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
- 
+//
+//criando a CLASSE do tipo USER para os USUARIOS da plataforma
+//
+//
+//colocando um ANNOTATION @ENTITY para MAPEAR a classe USER
+//com as ANNOTATION do JPA... 
 @Entity
+//usando a ANNOTATION @TABLE para criar uma TABELA e coluna
+//com o NOME da CLASSE e com colunas com nome dos ATRIBUTOS
 @Table(name = "tb_user")
 public class User implements UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
@@ -36,9 +43,17 @@ public class User implements UserDetails, Serializable {
 	private String email;
 	private String password;
 
+	// para o USER estar associado com VARIAS ROLES
+	// vamos ter q declarar uma COLECAO de ROLES com
+	// o SET/CONJUNTO, pois o SET NAO aceita REPETICOES
+	// (ao contrario da lista)
+	// todo USER tem q ter uma ROLE/PERFIL... EX: Todo usuario tem q ser
+	// admin ou cliente, ou aluno, etc...
+	//
+	// usando a ANNOTATION @MANYTOMANY para fazer uma ASSOCIACAO
+	// no BANCO de MUITOS para MUITOS...
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	// fazendo o mapeamento em q um USER tem varias ROLES
 	private Set<Role> roles = new HashSet<>();
 
 	@OneToMany(mappedBy = "user")
@@ -130,8 +145,6 @@ public class User implements UserDetails, Serializable {
 	public String getUsername() {
 		return email;
 	}
-
-
 	@Override
 	public boolean isAccountNonExpired() {
 // TODO Auto-generated method stub
@@ -143,7 +156,6 @@ public class User implements UserDetails, Serializable {
 // TODO Auto-generated method stub
 		return true;
 	}
-
 
 	@Override
 	public boolean isCredentialsNonExpired() {

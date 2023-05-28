@@ -24,13 +24,16 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	@Value("${security.oauth2.client.client-id}")
 	private String clientId;
-
+	//
 	@Value("${security.oauth2.client.client-secret}")
 	private String clientSecret;
-
+	//
 	@Value("${jwt.duration}")
 	private Integer jwtDuration;
 
+	//injetando os OBJ q vamos precisar
+	//
+	//injetando o BCRYPT
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
@@ -46,12 +49,14 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
 	private JwtTokenEnhancer tokenEnhancer;
 	
+
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 
 		security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
 	}
 
+	
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
@@ -66,6 +71,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+
 	TokenEnhancerChain chain = new TokenEnhancerChain();
 
 	chain.setTokenEnhancers(Arrays.asList(accessTokenConverter, tokenEnhancer));

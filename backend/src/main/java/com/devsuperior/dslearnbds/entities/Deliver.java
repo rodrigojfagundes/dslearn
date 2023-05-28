@@ -16,10 +16,16 @@ import javax.persistence.Table;
 import com.devsuperior.dslearnbds.entities.enums.DeliverStatus;
  
 @Entity
+
 @Table(name = "tb_deliver")
 public class Deliver implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//declarando as VAR/ATRIBUTOS
+	//
+	//
+	//colocando o @ID para dizer qual vai ser o ID da TABELA
+	//DELIVEr(tb_deliver) no BANCO
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -32,14 +38,15 @@ public class Deliver implements Serializable {
 	private String feedback;
 	private Integer correctCount;
 	
-	
+
 	@ManyToOne
 	@JoinColumns({  
 		@JoinColumn(name = "offer_id"), 
 		@JoinColumn(name = "user_id") 
 	})
 	private Enrollment enrollment;
-		
+	
+
 	@ManyToOne
 	@JoinColumn(name = "lesson_id")
 	private Lesson lesson;
