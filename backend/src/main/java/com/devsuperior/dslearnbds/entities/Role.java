@@ -18,17 +18,18 @@ public class Role implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String authority;
-
+	
 	public Role() {
 	}
 	
+
 	public Role(Long id, String authority) {
 		super();
 		this.id = id;
 		this.authority = authority;
 	}
 
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -45,7 +46,7 @@ public class Role implements Serializable {
 		this.authority = authority;
 	}
 	
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

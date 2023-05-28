@@ -13,13 +13,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
  
 @Entity
+
 @Table(name = "tb_offer")
 public class Offer implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -27,17 +27,22 @@ public class Offer implements Serializable {
 	private Instant startMoment;
 	private Instant endMoment;
 	
-
+	
+	//fazendo a ASSOCIACAO com o COURSE, pois toda OFFER vai ter 
+	// EXATAMENTE 1 CURSO
+	//
+	// ANNOTATION @MANYTOONE(Muitos Para Um)
 	@ManyToOne
 	@JoinColumn(name = "course_id")
 	private Course course;
-
+	
 	@OneToMany(mappedBy = "offer")
 	private List<Resource> resources = new ArrayList<>();
 	
 	public Offer() {
 	}
 	
+
 	public Offer(Long id, String edition, Instant startMoment, Instant endMoment, Course course) {
 		super();
 		this.id = id;
@@ -48,6 +53,7 @@ public class Offer implements Serializable {
 	}
 
 
+	//declarando os GET e SET
 	public Long getId() {
 		return id;
 	}
@@ -127,5 +133,8 @@ public class Offer implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+	
+
+	
 }

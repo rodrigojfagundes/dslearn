@@ -13,12 +13,17 @@ import javax.persistence.Table;
 
 //o COURSE é uma ENTIDADE/CLASSE em q
 // 1 - COURSE pode ter VARIAS OFERTAS/OFFER
-// 1 OFFER tem q TER OBRIGATORIAMENTE ((1)) COURSE 
+// 1 OFFER tem q TER OBRIGATORIAMENTE ((1)) COURSE
+//
+//
+//colocando um ANNOTATION @ENTITY para MAPEAR a classe COURSE
+//com as ANNOTATION do JPA... 
 @Entity
+
 @Table(name = "tb_course")
 public class Course implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -31,7 +36,7 @@ public class Course implements Serializable{
 
 	public Course() {
 	}
-
+	
 	public Course(Long id, String name, String imgUri, String imgGrayUri) {
 		super();
 		this.id = id;
@@ -40,6 +45,7 @@ public class Course implements Serializable{
 		this.imgGrayUri = imgGrayUri;
 	}
 
+	//declarando os GET e SET
 	
 	public Long getId() {
 		return id;
@@ -101,5 +107,8 @@ public class Course implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+
+	
+	
 }
