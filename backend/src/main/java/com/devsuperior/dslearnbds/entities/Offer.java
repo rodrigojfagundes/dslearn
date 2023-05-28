@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
  
 @Entity
 @Table(name = "tb_offer")
@@ -26,11 +27,10 @@ public class Offer implements Serializable {
 	private Instant startMoment;
 	private Instant endMoment;
 	
-	
 	@ManyToOne
 	@JoinColumn(name = "course_id")
 	private Course course;
-	
+
 	@OneToMany(mappedBy = "offer")
 	private List<Resource> resources = new ArrayList<>();
 	
@@ -103,6 +103,7 @@ public class Offer implements Serializable {
 	}
 
 
+	//declarando o HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -127,5 +128,8 @@ public class Offer implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}	
+	}
+	
+
+	
 }

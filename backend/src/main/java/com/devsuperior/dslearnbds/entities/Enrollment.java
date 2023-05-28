@@ -21,34 +21,33 @@ public class Enrollment {
 	private Instant enrollMoment;
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant refundMoment;
-	private boolean avaliable;
+	private boolean available;
 	private boolean onlyUpdate;
 	
-
+	
+	//criando o construtor vazio
 	public Enrollment() {
 	}
 	
-	
-	public Enrollment(User user, Offer offer, Instant enrollMoment, Instant refundMoment, boolean avaliable,
+	public Enrollment(User user, Offer offer, Instant enrollMoment, Instant refundMoment, boolean available,
 			boolean onlyUpdate) {
 		super();
 		id.setUser(user);
 		id.setOffer(offer);
 		this.enrollMoment = enrollMoment;
 		this.refundMoment = refundMoment;
-		this.avaliable = avaliable;
+		this.available = available;
 		this.onlyUpdate = onlyUpdate;
 	}
 	
-
 	public User getStudent() {
 		return id.getUser();
 	}
-
+	
 	public void setStudent(User user) {
 		id.setUser(user);
 	}
-	
+
 	public Offer getOffer() {
 		return id.getOffer();
 	}
@@ -81,14 +80,13 @@ public class Enrollment {
 
 
 
-	public boolean isAvaliable() {
-		return avaliable;
+	public boolean isAvailable() {
+		return available;
 	}
 
 
-
-	public void setAvaliable(boolean avaliable) {
-		this.avaliable = avaliable;
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
 
 
