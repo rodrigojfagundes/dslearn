@@ -35,16 +35,24 @@ public class User implements Serializable {
 	private String email;
 	private String password;
 	
+	//para o USER estar associado com VARIAS ROLES
+	//vamos ter q declarar uma COLECAO de ROLES com
+	//o SET/CONJUNTO, pois o SET NAO aceita REPETICOES 
+	//(ao contrario da lista)
+	//todo USER tem q ter uma ROLE/PERFIL... EX: Todo usuario tem q ser
+	//admin ou cliente, ou aluno, etc...
+	//
+	//usando a ANNOTATION @MANYTOMANY para fazer uma ASSOCIACAO
+	//no BANCO de MUITOS para MUITOS... 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
 		joinColumns = @JoinColumn(name = "user_id"),
 		inverseJoinColumns = @JoinColumn(name = "role_id"))	
-
 	private Set<Role> roles = new HashSet<>();
 	
 	@OneToMany(mappedBy = "user")
 	private List<Notification> notifications = new ArrayList<>();
-	
+
 	public User() {
 	}
 	
@@ -96,6 +104,7 @@ public class User implements Serializable {
 		return notifications;
 	}
 	
+	//criando o HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

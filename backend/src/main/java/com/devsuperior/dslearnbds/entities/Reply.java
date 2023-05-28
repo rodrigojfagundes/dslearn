@@ -22,6 +22,7 @@ import javax.persistence.Table;
 //colocando um ANNOTATION @ENTITY para MAPEAR a classe REPLY
 //com as ANNOTATION do JPA...
 @Entity
+
 @Table(name = "tb_reply")
 public class Reply implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -37,6 +38,14 @@ public class Reply implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant moment;
 
+	//
+	//o REPLY/resposta esta ASSOCIADA a TOPICS/topico
+	//
+	//fazendo a ASSOCIACAO com o TOPICS, pois toda REPLY vai ser de 
+	// 1 TOPICO (toda REPLY/resposta precisa ser de 1 topics/topico)
+	//
+	// ANNOTATION @MANYTOONE(Muitos Para Um) -> 1 REPLY/resposta tem 1 TOPICS/topico
+	// e 1 TOPICS/topico pode ter VARIAS REPLY/respostas :)
 	@ManyToOne
 	@JoinColumn(name = "topic_id")
 	private Topic topic;
@@ -51,7 +60,6 @@ public class Reply implements Serializable {
 		inverseJoinColumns = @JoinColumn(name = "user_id")
 	)
 	private Set<User> likes = new HashSet<>();
-	
 	
 	public Reply() {
 	}
@@ -100,6 +108,7 @@ public class Reply implements Serializable {
 		return likes;
 	}
 
+	//HASHCODE EQUALS para comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -18,7 +18,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
  
 @Entity
 @Table(name = "tb_topic")
@@ -35,7 +34,7 @@ public class Topic implements Serializable {
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant moment;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private User author;
@@ -62,6 +61,7 @@ public class Topic implements Serializable {
 	private List<Reply> replies = new ArrayList<>();
 	
 	
+
 	public Topic() {
 	}
 

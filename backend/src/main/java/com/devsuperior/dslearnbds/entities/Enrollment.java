@@ -36,7 +36,6 @@ public class Enrollment {
 	@OneToMany(mappedBy = "enrollment")
 	private List<Deliver> deliveries = new ArrayList<>();
 	
-
 	public Enrollment() {
 	}
 	
@@ -103,7 +102,6 @@ public class Enrollment {
 		return deliveries;
 	}
 
-	//HASHCODE EQUALS para fazer comparacoes
 	@Override
 	public int hashCode() {
 		final int prime = 31;

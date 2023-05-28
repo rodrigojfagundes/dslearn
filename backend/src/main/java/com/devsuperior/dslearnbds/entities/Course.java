@@ -10,15 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-//o COURSE é uma ENTIDADE/CLASSE em q
-//1 - COURSE pode ter 0 ouu VARIAS OFERTAS/OFFER
-//1 OFFER tem q TER OBRIGATORIAMENTE ((1)) COURSE
+ 
 @Entity
 @Table(name = "tb_course")
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

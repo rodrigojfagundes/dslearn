@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.devsuperior.dslearnbds.entities.enums.DeliverStatus;
+
  
 @Entity
 @Table(name = "tb_deliver")
@@ -26,19 +27,19 @@ public class Deliver implements Serializable {
 	private String uri;
 	
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-	private Instant moment;
-	
+	private Instant moment;	
 	private DeliverStatus status;
 	private String feedback;
 	private Integer correctCount;
 	
-	
+
 	@ManyToOne
 	@JoinColumns({  
 		@JoinColumn(name = "offer_id"), 
 		@JoinColumn(name = "user_id") 
 	})
 	private Enrollment enrollment;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "lesson_id")
